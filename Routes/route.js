@@ -10,7 +10,7 @@ router.get('/',(req,res)=>{
 router.post('/login',(req,res)=>{
     // console.log(req-.body);
     const {email,password}=req.body;
-    if(email=="sathwikacharya61@gmail.com"&&password==1234){
+    if(email=="chandranaik0426@gmail.com"&&password==1234){
         res.status(200).send({message:"LoggedIn successfully",user:email,state:true});
     }else{
         res.status(200).send({message:"Wrong credentials",state:false});
@@ -32,12 +32,13 @@ router.get('/user',async(req,res)=>{
     }
 })
 router.post('/user', async (req, res) => {
-    const { name, rno, batch, address, cource, startdate } = req.body;
+    const { name, rno,email, batch, address, cource, startdate } = req.body;
     try {
         const user = await User.findOne({ name: name, rno: rno })
         if (!user) {
             User.create({
                 name: name,
+                email:email,
                 batch: batch,
                 rno: rno,
                 address: address,
